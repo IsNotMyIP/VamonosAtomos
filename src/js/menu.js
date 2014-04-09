@@ -31,9 +31,37 @@
 
       window['vamonosatomos'].Global.level = 0;
 
+      this.rght = true;
+      this.lft = false;
+
+      this.waveCounter = this.time.now;
+
+      this.waves = this.game.add.sprite(-60, 530, 'olas');
+
     },
 
     update: function () {
+
+      if(this.time.now - this.waveCounter > 2000) {
+        this.waveCounter = this.time.now;
+        if(this.rght){
+          this.rght = false;
+          this.lft = true;
+        }
+        else if(this.lft){
+          this.rght = true;
+          this.lft = false;
+        }
+      }
+
+      if(this.rght){
+        this.waves.x -= 0.07 * this.time.elapsed;
+      }
+      if(this.lft){
+        this.waves.x += 0.07 * this.time.elapsed;
+      }
+
+
       if(this.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
         this.game.state.start('game');
         window['vamonosatomos'].Global.level = 1;

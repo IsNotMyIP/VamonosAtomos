@@ -40,13 +40,14 @@
       this.atoms = new Array(10);
       
       this.counter = 0;
+      this.waveCounter = this.time.now;
 
       this.run = 0;
 
       this.resetLetter = this.time.now;
       window['vamonosatomos'].Global.score = 0;
 
-      this.waves = this.game.add.sprite(-60, 520, 'olas');
+      this.waves = this.game.add.sprite(-60, 530, 'olas');
 
       this.rght = true;
       this.lft = false;
@@ -54,14 +55,18 @@
 
     update: function () {
 
-      if(this.waves.x > 500) {
-        this.rght = false;
-        this.lft = true;
+      if(this.time.now - this.waveCounter > 2000) {
+        this.waveCounter = this.time.now;
+        if(this.rght){
+          this.rght = false;
+          this.lft = true;
+        }
+        else if(this.lft){
+          this.rght = true;
+          this.lft = false;
+        }
       }
-      if(this.waves.x < 40) {
-        this.rght = true;
-        this.lft = false;
-      }
+
       if(this.rght){
         this.waves.x -= 0.07 * this.time.elapsed;
       }
@@ -75,7 +80,7 @@
         this.atoms[this.counter] = new Elemento(this);
         this.atoms[this.counter].initSprite (rand, 0);
         this.atoms[this.counter].initText (rand -50 , -70);
-        this.atoms[this.counter].getType();
+        //this.atoms[this.counter].getType();
         this.atoms[this.counter].sprite.pivot.x = 37.5;
         this.atoms[this.counter].sprite.pivot.y = 37.5;
 
