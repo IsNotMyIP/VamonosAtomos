@@ -34,9 +34,10 @@
     },
 
     update: function () {
-      // if(this.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
-      //    this.game.state.start('game');
-      // }
+      if(this.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+        this.game.state.start('game');
+        window['vamonosatomos'].Global.level = 1;
+     }
 
       if(this.input.keyboard.isDown(Phaser.Keyboard.A)){
         window['vamonosatomos'].Global.level = 1;
@@ -54,6 +55,7 @@
     },
 
     onDown: function () {
+      window['vamonosatomos'].Global.level = 1;
       this.game.state.start('game');
     }
   };

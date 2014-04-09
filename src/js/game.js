@@ -46,9 +46,28 @@
       this.resetLetter = this.time.now;
       window['vamonosatomos'].Global.score = 0;
 
+      this.waves = this.game.add.sprite(-60, 520, 'olas');
+
+      this.rght = true;
+      this.lft = false;
     },
 
     update: function () {
+
+      if(this.waves.x > 500) {
+        this.rght = false;
+        this.lft = true;
+      }
+      if(this.waves.x < 40) {
+        this.rght = true;
+        this.lft = false;
+      }
+      if(this.rght){
+        this.waves.x -= 0.07 * this.time.elapsed;
+      }
+      if(this.lft){
+        this.waves.x += 0.07 * this.time.elapsed;
+      }
 
       while(this.counter < window['vamonosatomos'].Global.level) {
         var rand = Math.random()* this.game.width;
