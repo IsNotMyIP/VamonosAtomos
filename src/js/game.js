@@ -40,8 +40,7 @@
       for(i=0; i< 1000; i++) {
         console.log(i);
         if (i>=999){
-          this.bromo.sprite.kill();                   // Stop showing element
-          this.bromo.text.visible = false;            //Delete text
+                      //Delete text
         }
         
       }
