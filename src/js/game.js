@@ -28,14 +28,25 @@
   Game.prototype = {
 
     create: function () {
+
+      this.game.physics.startSystem(Phaser.Physics.ARCADE);
+      this.game.physics.arcade.gravity.y = 100;
+
       this.bromo = new Elemento(this);
       this.bromo.initSprite(100,100);
       this.bromo.initText(50,50);
       this.bromo.getType();
+      this.bromo.sprite.pivot.x = 37.5;
+      this.bromo.sprite.pivot.y = 37.5;
 
     },
 
     update: function () {
+      this.bromo.sprite.rotation += 0.01 * this.time.elapsed;
+
+
+
+      /*
       var i;
       for(i=0; i< 1000; i++) {
         console.log(i);
@@ -45,6 +56,7 @@
         }
         
       }
+      /*
       /*
       for (i=0, x=this.elementName.length; i < x; i++){
         console.log(this.elementName[i]);
