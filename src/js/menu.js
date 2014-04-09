@@ -26,6 +26,10 @@
     },
 
     update: function () {
+      
+      if(this.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+        this.game.state.start('game');
+      }
 
     },
 

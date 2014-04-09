@@ -29,117 +29,158 @@
     create: function () {
 
       this.starfield = this.game.add.sprite(0, 0, 'starfield');
+      this.style = { font: '30px Arial', fill: '#ff0044', align: 'center' };
 
-      this.bromo = new Elemento(this);
-      this.bromo.initSprite(100,100);
-      this.bromo.initText(50,50);
-      this.bromo.getType();
-      this.bromo.sprite.pivot.x = 37.5;
-      this.bromo.sprite.pivot.y = 37.5;
+      // var rand = Math.random()* this.game.width;
+
+      // this.bromo = new Elemento(this);
+      // this.bromo.initSprite( rand ,0);
+      // this.bromo.initText( rand - 50 , -70);
+      // this.bromo.getType();
+      // this.bromo.sprite.pivot.x = 37.5;
+      // this.bromo.sprite.pivot.y = 37.5;
 
       this.letter1 = 0;
       this.letter2 = 0;
 
-      //this.letter1text = null;
-      //this.letter2text = null;
-      //this.letter1text = this.game.add.text(100, 100, '0', this.style);
-      //this.letter2text = this.game.add.text(120, 100, '0', this.style);
+      this.text = this.game.add.text(80, 30, 'Atom :' + this.letter1 + this.letter2 , this.style);
+      this.text.anchor.setTo(0.5, 0.5);
 
-      this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY,'', { fontSize: '84px', fill: '#fff' });
-      this.stringAtom = this.game.add.text(70, 100, 'Atom: ' , this.style);
-      this.stringAll = this.game.add.text(100, 100, this.stringAtom + this.letter1 + this.letter2 , this.style);
+      this.atoms = new Array(10);
+      this.counter = 0;
 
+      this.run = 0;
+
+      this.resetLetter = this.time.now;
 
     },
 
     update: function () {
-      this.bromo.sprite.rotation += 0.01 * this.time.elapsed;
-      this.bromo.sprite.y += 0.08 * this.time.elapsed;
-      this.bromo.text.y += 0.08 * this.time.elapsed;
 
+      while(this.counter < 1) {
+        var rand = Math.random()* this.game.width;
 
-      this.stateText.anchor.setTo(0.5, 0.5);
-      this.stateText.visible = false;
-      this.stringAll.content = this.stringAtom + this.letter1 + this.letter2;
+        this.atoms[this.counter] = new Elemento(this);
+        this.atoms[this.counter].initSprite (rand, 0);
+        this.atoms[this.counter].initText (rand -50 , -70);
+        this.atoms[this.counter].getType();
+        this.atoms[this.counter].sprite.pivot.x = 37.5;
+        this.atoms[this.counter].sprite.pivot.y = 37.5;
+
+        this.counter++;
+      }
+
+      if(this.time.now - this.resetLetter > 500) {
+        this.letter1 = 0;
+        this.letter2 = 0;
+      }
+
+      this.text.setText('Atom: ' + this.letter1 + this.letter2);
 
       if(this.letter1 === 0){     
         if(this.input.keyboard.isDown(Phaser.Keyboard.A)){
           this.letter1 = 'a';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.B)){
           this.letter1 = 'b';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.C)){
           this.letter1 = 'c';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.D)){
           this.letter1 = 'd';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.E)){
           this.letter1 = 'e';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.F)){
           this.letter1 = 'f';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.G)){
           this.letter1 = 'g';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.H)){
           this.letter1 = 'h';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.I)){
           this.letter1 = 'i';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.J)){
           this.letter1 = 'j';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.K)){
           this.letter1 = 'k';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.L)){
           this.letter1 = 'l';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.M)){
           this.letter1 = 'm';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.N)){
           this.letter1 = 'n';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.O)){
           this.letter1 = 'o';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.P)){
           this.letter1 = 'p';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.Q)){
           this.letter1 = 'q';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.R)){
           this.letter1 = 'r';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.S)){
           this.letter1 = 's';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.T)){
           this.letter1 = 't';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.U)){
           this.letter1 = 'u';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.V)){
           this.letter1 = 'v';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.W)){
           this.letter1 = 'w';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
           this.letter1 = 'x';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.Y)){
           this.letter1 = 'y';
+          this.resetLetter = this.time.now;
         }
         else if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
           this.letter1 = 'z';
+          this.resetLetter = this.time.now;
         }
       }
       if(this.letter1 !== 0){
@@ -228,6 +269,53 @@
         this.letter2 = 0;
       }
 
+      // if(this.letter1 + this.letter2 == this.bromo.molecule.toLowerCase()) {
+      //   this.bromo.sprite.kill();
+      // }
+
+      for(var i = 0; i < 1; i++) {
+         if(this.letter1 + this.letter2 === this.atoms[i].molecule.toLowerCase()){
+           //debugger
+           this.atoms[i].text.visible = false;
+           this.atoms[i].sprite.kill();
+           this.counter--;
+           this.letter1 = 0; 
+           this.letter2 = 0;
+           this.run += 0.1;
+         } 
+      }
+
+      for(var i = 0; i < 1; i++) {
+         if(this.letter1 === this.atoms[i].molecule.toLowerCase()){
+           this.atoms[i].text.visible = false;
+           this.atoms[i].sprite.kill();
+           this.counter--;
+           this.letter1 = 0; 
+           this.letter2 = 0;
+           this.run += 0.1;
+         } 
+      }
+
+
+      
+      for(var i = 0; i < 1; i++) {
+          this.atoms[i].sprite.rotation += 0.01 * this.time.elapsed;
+          this.atoms[i].sprite.y += 0.08 * this.time.elapsed + this.run;
+          this.atoms[i].text.y += 0.08 * this.time.elapsed + this.run;
+      }
+
+      for(var i = 0; i < 1; i++) {
+        if(this.atoms[i].sprite.x < 50){
+          this.atoms[i].sprite.x += 50;
+          this.atoms[i].text.x += 50;
+        }
+      }
+
+      for(var i = 0; i < 1; i++) {
+        if(this.atoms[i].sprite.y > 640){
+          this.game.state.start('menu');
+        }
+      }
      
     },
     
