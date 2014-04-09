@@ -31,15 +31,6 @@
       this.starfield = this.game.add.sprite(0, 0, 'starfield');
       this.style = { font: '30px Arial', fill: '#ff0044', align: 'center' };
 
-      // var rand = Math.random()* this.game.width;
-
-      // this.bromo = new Elemento(this);
-      // this.bromo.initSprite( rand ,0);
-      // this.bromo.initText( rand - 50 , -70);
-      // this.bromo.getType();
-      // this.bromo.sprite.pivot.x = 37.5;
-      // this.bromo.sprite.pivot.y = 37.5;
-
       this.letter1 = 0;
       this.letter2 = 0;
 
@@ -47,6 +38,7 @@
       this.text.anchor.setTo(0.5, 0.5);
 
       this.atoms = new Array(10);
+      
       this.counter = 0;
 
       this.run = 0;
@@ -269,13 +261,8 @@
         this.letter2 = 0;
       }
 
-      // if(this.letter1 + this.letter2 == this.bromo.molecule.toLowerCase()) {
-      //   this.bromo.sprite.kill();
-      // }
-
       for(var i = 0; i < 1; i++) {
          if(this.letter1 + this.letter2 === this.atoms[i].molecule.toLowerCase()){
-           //debugger
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
            this.counter--;
@@ -295,9 +282,7 @@
            this.run += 0.1;
          } 
       }
-
-
-      
+     
       for(var i = 0; i < 1; i++) {
           this.atoms[i].sprite.rotation += 0.01 * this.time.elapsed;
           this.atoms[i].sprite.y += 0.08 * this.time.elapsed + this.run;
@@ -322,12 +307,6 @@
     onInputDown: function () {
       this.game.state.start('menu');
     }
-
-    /*compare: function (element) {
-      if(this.letter1 + this.letter2 == element.molecule) {
-        element.sprite.kill();
-      }
-    }*/
 
   };
 
