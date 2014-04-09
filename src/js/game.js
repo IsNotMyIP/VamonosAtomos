@@ -44,12 +44,13 @@
       this.run = 0;
 
       this.resetLetter = this.time.now;
+      window['vamonosatomos'].Global.score = 0;
 
     },
 
     update: function () {
 
-      while(this.counter < 1) {
+      while(this.counter < window['vamonosatomos'].Global.level) {
         var rand = Math.random()* this.game.width;
 
         this.atoms[this.counter] = new Elemento(this);
@@ -67,7 +68,7 @@
         this.letter2 = 0;
       }
 
-      this.text.setText('Atom: ' + this.letter1 + this.letter2);
+      this.text.setText('Score: ' + window['vamonosatomos'].Global.score);
 
       if(this.letter1 === 0){     
         if(this.input.keyboard.isDown(Phaser.Keyboard.A)){
@@ -261,7 +262,7 @@
         this.letter2 = 0;
       }
 
-      for(var i = 0; i < 1; i++) {
+      for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
          if(this.letter1 + this.letter2 === this.atoms[i].molecule.toLowerCase()){
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
@@ -269,10 +270,11 @@
            this.letter1 = 0; 
            this.letter2 = 0;
            this.run += 0.1;
+           window['vamonosatomos'].Global.score++;
          } 
       }
 
-      for(var i = 0; i < 1; i++) {
+      for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
          if(this.letter1 === this.atoms[i].molecule.toLowerCase()){
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
@@ -280,23 +282,24 @@
            this.letter1 = 0; 
            this.letter2 = 0;
            this.run += 0.1;
+           window['vamonosatomos'].Global.score++;
          } 
       }
      
-      for(var i = 0; i < 1; i++) {
+      for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
           this.atoms[i].sprite.rotation += 0.01 * this.time.elapsed;
           this.atoms[i].sprite.y += 0.08 * this.time.elapsed + this.run;
           this.atoms[i].text.y += 0.08 * this.time.elapsed + this.run;
       }
 
-      for(var i = 0; i < 1; i++) {
+      for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
         if(this.atoms[i].sprite.x < 50){
           this.atoms[i].sprite.x += 50;
           this.atoms[i].text.x += 50;
         }
       }
 
-      for(var i = 0; i < 1; i++) {
+      for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
         if(this.atoms[i].sprite.y > 640){
           this.game.state.start('menu');
         }

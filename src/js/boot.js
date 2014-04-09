@@ -31,6 +31,7 @@
 
   window['vamonosatomos'] = window['vamonosatomos'] || {};
   window['vamonosatomos'].Boot = Boot;
+  window['vamonosatomos'].Global = {score: 0, level: 0};
 
 }());
 
