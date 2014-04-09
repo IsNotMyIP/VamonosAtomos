@@ -2,7 +2,6 @@
   'use strict';
   function Elemento (parent) {
       
-      //this.molecule = parent.elementName[1];
       this.molecule = parent.elementName[Math.floor(Math.random() * 80)];
       this.sprite=null;
       this.initSprite= function (x, y) {
