@@ -51,6 +51,19 @@
 
       this.rght = true;
       this.lft = false;
+
+      while(this.counter < window['vamonosatomos'].Global.level) {
+        var rand = Math.random()* this.game.width;
+
+        this.atoms[this.counter] = new Elemento(this);
+        this.atoms[this.counter].initSprite (rand, 0);
+        this.atoms[this.counter].initText (rand -50 , -70);
+        //this.atoms[this.counter].getType();
+        this.atoms[this.counter].sprite.pivot.x = 37.5;
+        this.atoms[this.counter].sprite.pivot.y = 37.5;
+
+        this.counter++;
+      }
     },
 
     update: function () {
@@ -72,19 +85,6 @@
       }
       if(this.lft){
         this.waves.x += 0.07 * this.time.elapsed;
-      }
-
-      while(this.counter < window['vamonosatomos'].Global.level) {
-        var rand = Math.random()* this.game.width;
-
-        this.atoms[this.counter] = new Elemento(this);
-        this.atoms[this.counter].initSprite (rand, 0);
-        this.atoms[this.counter].initText (rand -50 , -70);
-        //this.atoms[this.counter].getType();
-        this.atoms[this.counter].sprite.pivot.x = 37.5;
-        this.atoms[this.counter].sprite.pivot.y = 37.5;
-
-        this.counter++;
       }
 
       if(this.time.now - this.resetLetter > 500) {
@@ -290,23 +290,39 @@
          if(this.letter1 + this.letter2 === this.atoms[i].molecule.toLowerCase()){
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
-           this.counter--;
            this.letter1 = 0; 
            this.letter2 = 0;
            this.run += 0.1;
            window['vamonosatomos'].Global.score++;
-         } 
+           
+           var rand = Math.random()* this.game.width;
+           this.atoms[i] = new Elemento(this);
+           this.atoms[i].initSprite (rand, 0);
+           this.atoms[i].initText (rand -50 , -70);
+           //this.atoms[i].getType();
+           this.atoms[i].sprite.pivot.x = 37.5;
+           this.atoms[i].sprite.pivot.y = 37.5;
+          }
+        
       }
 
       for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {
          if(this.letter1 === this.atoms[i].molecule.toLowerCase()){
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
-           this.counter--;
            this.letter1 = 0; 
            this.letter2 = 0;
            this.run += 0.1;
            window['vamonosatomos'].Global.score++;
+
+
+           var rand = Math.random()* this.game.width;
+           this.atoms[i] = new Elemento(this);
+           this.atoms[i].initSprite (rand, 0);
+           this.atoms[i].initText (rand -50 , -70);
+           //this.atoms[i].getType();
+           this.atoms[i].sprite.pivot.x = 37.5;
+           this.atoms[i].sprite.pivot.y = 37.5;
          } 
       }
      
