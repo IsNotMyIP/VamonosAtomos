@@ -67,7 +67,7 @@ gulp.task('connect', connect.server({
   port: 9000,
   livereload: true,
   open: {
-   browser: 'firefox' //
+   browser: 'Google Chrome Canary' //
   }
 }));
 
