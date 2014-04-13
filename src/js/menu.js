@@ -13,34 +13,55 @@
         , y = this.game.height / 2;
 
       this.starfield = this.game.add.sprite(0, 0, 'starfield');
-
       this.titleTxt = this.add.bitmapText(x, y, 'minecraftia', 'Normal   Hard   Heissenberg' );
       this.titleTxt.align = 'center';
       this.titleTxt.x = this.game.width / 2 - this.titleTxt.textWidth / 2;
 
       y = y + this.titleTxt.height + 5;
-      this.startTxt = this.add.bitmapText(x, y, 'minecraftia', 'Choose the level of difficulty\nUsing A, S, D');
+      this.startTxt = this.add.bitmapText(x, y, 'minecraftia', 'Choose the level of difficulty\nUsing arrows and press ENTER');
       this.startTxt.align = 'center';
       this.startTxt.x = this.game.width / 2 - this.startTxt.textWidth / 2;
-
-      this.input.onDown.add(this.onDown, this);
 
       this.atom1 = this.game.add.sprite(0, 400, 'atom1');
       this.atom1 = this.game.add.sprite(200, 400, 'atom2');
       this.atom1 = this.game.add.sprite(400, 400, 'heisenberg');
 
-      window['vamonosatomos'].Global.level = 0;
+      //Se anaden eventos para el selector del menu
+      this.selector1 = this.game.add.sprite(35, 240, 'Enabled');
+      this.selector2 = this.game.add.sprite(235, 240, 'Enabled');
+      this.selector3 = this.game.add.sprite(435, 240, 'Enabled');
+      this.selector3.kill();
+
+      window['vamonosatomos'].Global.level = 2;
 
       this.rght = true;
       this.lft = false;
 
       this.waveCounter = this.time.now;
+      this.selectCounter = this.time.now;
 
       this.waves = this.game.add.sprite(-60, 530, 'olas');
+      this.cursors = this.input.keyboard.createCursorKeys();
 
     },
 
     update: function () {
+      //Choosing dificulty
+      if (window['vamonosatomos'].Global.level === 2) {
+        this.selector3.exists = false;
+        this.selector2.exists = true;
+        this.selector1.exists = false;
+      }
+      else if (window['vamonosatomos'].Global.level === 1) {
+        this.selector3.exists = false;
+        this.selector2.exists = false;
+        this.selector1.exists = true;
+      }
+      else {
+        this.selector3.exists = true;
+        this.selector2.exists = false;
+        this.selector1.exists = false;
+      }
 
       if(this.time.now - this.waveCounter > 2000) {
         this.waveCounter = this.time.now;
@@ -64,9 +85,23 @@
 
       if(this.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
         this.game.state.start('game');
-        window['vamonosatomos'].Global.level = 1;
      }
 
+     //Cursor selector of level
+     if(this.cursors.right.isDown && this.time.now -this.selectCounter > 500 && window['vamonosatomos'].Global.level < 3) {
+      this.selectCounter = this.time.now;
+         window['vamonosatomos'].Global.level++;
+         console.log(window['vamonosatomos'].Global.level);
+      
+     }
+     if (this.cursors.left.isDown && this.time.now -this.selectCounter > 500 && window['vamonosatomos'].Global.level >1 ){
+      this.selectCounter = this.time.now;
+      
+         window['vamonosatomos'].Global.level--;
+         console.log(window['vamonosatomos'].Global.level);
+     }
+
+      /*
       if(this.input.keyboard.isDown(Phaser.Keyboard.A)){
         window['vamonosatomos'].Global.level = 1;
         this.game.state.start('game');
@@ -79,13 +114,10 @@
         window['vamonosatomos'].Global.level = 3;
         this.game.state.start('game');
       }
-
+      */
     },
 
-    onDown: function () {
-      window['vamonosatomos'].Global.level = 1;
-      this.game.state.start('game');
-    }
+    
   };
 
   window['vamonosatomos'] = window['vamonosatomos'] || {};

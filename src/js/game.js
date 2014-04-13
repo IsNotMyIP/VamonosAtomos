@@ -290,7 +290,7 @@
          if(this.letter1 + this.letter2 === this.atoms[i].molecule.toLowerCase()){
            this.atoms[i].text.visible = false;
            this.atoms[i].sprite.kill();
-           this.letter1 = 0; 
+           this.letter1 = 0;
            this.letter2 = 0;
            this.run += 0.1;
            window['vamonosatomos'].Global.score++;
@@ -323,7 +323,7 @@
            //this.atoms[i].getType();
            this.atoms[i].sprite.pivot.x = 37.5;
            this.atoms[i].sprite.pivot.y = 37.5;
-         } 
+         }
       }
      
       for(var i = 0; i < window['vamonosatomos'].Global.level; i++) {

@@ -19,7 +19,9 @@
       this.load.image('atom1', 'assets/atom1.png');
       this.load.image('atom2', 'assets/atom2.png');
       this.load.image('heisenberg', 'assets/heissenberg.png');
-      this.load.image('olas', 'assets/olas.png')
+      this.load.image('olas', 'assets/olas.png');
+      this.load.image('Disabled','assets/Disabled.png');
+      this.load.image('Enabled', 'assets/Enabled.png');
 
       this.load.image('starfield', 'assets/textura_fondo.jpg');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
