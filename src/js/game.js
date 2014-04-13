@@ -58,7 +58,7 @@
         this.atoms[this.counter] = new Elemento(this);
         this.atoms[this.counter].initSprite (rand, 0);
         this.atoms[this.counter].initText (rand -50 , -70);
-        //this.atoms[this.counter].getType();
+        this.atoms[this.counter].getType();
         this.atoms[this.counter].sprite.pivot.x = 37.5;
         this.atoms[this.counter].sprite.pivot.y = 37.5;
 
@@ -299,7 +299,7 @@
            this.atoms[i] = new Elemento(this);
            this.atoms[i].initSprite (rand, 0);
            this.atoms[i].initText (rand -50 , -70);
-           //this.atoms[i].getType();
+           this.atoms[i].getType();
            this.atoms[i].sprite.pivot.x = 37.5;
            this.atoms[i].sprite.pivot.y = 37.5;
           }
@@ -320,7 +320,7 @@
            this.atoms[i] = new Elemento(this);
            this.atoms[i].initSprite (rand, 0);
            this.atoms[i].initText (rand -50 , -70);
-           //this.atoms[i].getType();
+           this.atoms[i].getType();
            this.atoms[i].sprite.pivot.x = 37.5;
            this.atoms[i].sprite.pivot.y = 37.5;
          }

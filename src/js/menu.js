@@ -43,6 +43,10 @@
       this.waves = this.game.add.sprite(-60, 530, 'olas');
       this.cursors = this.input.keyboard.createCursorKeys();
 
+      //this.text = this.add.text(80, 30, window['vamonosatomos'].Global.score , this.style);
+      //this.text.anchor.setTo(0.5, 0.5);
+
+
     },
 
     update: function () {
@@ -62,6 +66,8 @@
         this.selector2.exists = false;
         this.selector1.exists = false;
       }
+
+      //this.text.content = ('Score: ' + window['vamonosatomos'].Global.score);
 
       if(this.time.now - this.waveCounter > 2000) {
         this.waveCounter = this.time.now;
